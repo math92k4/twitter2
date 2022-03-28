@@ -1,0 +1,245 @@
+:root {
+  --blue: rgb(29, 155, 240);
+  --white: #fff;
+  --opa-white: rgba(255, 255, 255, 0.8);
+  --tint: #dfe4e6;
+  --tint-light: #e4e2e2;
+  --grey: #7e7e7e;
+  --main-shadow: 0px 3.3px 25.2px -11px rgba(0, 0, 0, 0.48), 0px 23px 388px -11px rgba(0, 0, 0, 0.212);
+}
+
+/* RESETS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-size: 1rem;
+  color: black;
+  font-family: sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+input {
+  border: none;
+  font-size: inherit;
+}
+input:focus {
+  outline: none;
+}
+input[type="file"] {
+  display: none;
+}
+.custom_file_input {
+  cursor: pointer;
+}
+button {
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+/* SIGN UP / SIGN IN */
+
+#sign_up_in_page main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sign_up_in_page form {
+  display: grid;
+  width: 25rem;
+  padding: 2rem;
+  border: 1px solid var(--tint);
+  box-shadow: var(--main-shadow);
+  border-radius: 1rem;
+}
+#sign_up_in_page label {
+  margin-bottom: 0.2rem;
+}
+#sign_up_in_page input {
+  border: 1px solid var(--grey);
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+#sign_up_in_page button {
+  padding: 0.7rem 3rem;
+  margin-top: 1rem;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 1.2rem;
+  place-self: center;
+  font-weight: 700;
+  border-radius: 999px;
+  box-shadow: var(--main-shadow);
+}
+
+/* MAIN SITE */
+
+#main_page #content {
+  display: flex;
+  justify-content: center;
+}
+
+/* HEADER */
+#main_page header {
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+#main_page header button,
+#main_page header a {
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+#main_page header button:hover,
+#main_page header a:hover {
+  background: var(--tint-light);
+}
+
+/* MAIN */
+#main_page main {
+  width: 600px;
+  border-left: 1px solid var(--tint);
+  border-right: 1px solid var(--tint);
+  min-height: 100vh;
+}
+h1 {
+  position: sticky;
+  top: 0;
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* create tweet */
+#create_tweet {
+  padding: 0.1rem 1rem 0.75rem 1rem;
+  border-bottom: 1px solid var(--tint-light);
+  display: flex;
+}
+#create_tweet .tweet_btn {
+  background: var(--blue);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: var(--white);
+  font-weight: 700;
+  box-shadow: var(--main-shadow);
+}
+#create_tweet > div {
+  flex: 1;
+}
+textarea {
+  width: 100%;
+  font-size: 1.25rem;
+  font-family: inherit;
+  color: inherit;
+  resize: none;
+  border: none;
+  padding: 12.5px 0;
+  border-bottom: 1px solid var(--tint-light);
+}
+textarea:focus {
+  outline: none;
+}
+#create_tweet .action_bar {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* The tweets */
+.tweet {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--tint-light);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.tweet img {
+  max-height: 350px;
+  border-radius: 2rem;
+  object-fit: cover;
+  border: 1px solid var(--tint);
+}
+.tweet_info {
+  display: flex;
+  margin-bottom: 0.2rem;
+}
+.tweet_info > * {
+  margin-right: 0.3rem;
+  color: var(--grey);
+}
+.tweet_info .user_name {
+  color: black;
+  font-weight: 700;
+}
+.tweet .action_bar {
+  margin-top: 0.75rem;
+}
+.user_icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-right: 0.75rem;
+}
+
+/* ASIDE */
+#main_page aside {
+  width: 100%;
+  max-width: 316px;
+}
+
+/* MODALS */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.4;
+  z-index: -1;
+}
+.modal form {
+  display: flex;
+  max-width: 600px;
+  margin: 10rem auto;
+  background: var(--white);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+}

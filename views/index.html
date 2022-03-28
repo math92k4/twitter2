@@ -1,0 +1,81 @@
+% include("head", page_title="Welcome - please sign in", js="js/main.js", body_id = "main_page")
+
+<!-- Values to show / hide user specific features (Front-end sake) -->
+
+<!-- Modals -->
+<div class="modal hide" id="update_tweet">
+  <div class="bg" onclick="hideUpdateTweet()"></div>
+  <form onsubmit="return false">
+    <button class="user_icon">M</button>
+    <div>
+      <input name="tweet_id" hidden type="text" />
+      <textarea oninput="autoResize(event)" rows="1" name="tweet_text" placeholder="What's happening?" minlength="1" required></textarea>
+      <label class="custom_file_input" for="modal_tweet_image">Chose file</label>
+      <input id="modal_tweet_image" name="tweet_image" type="file" />
+      <button class="update_btn" onclick="updateTweet(event)">update</button>
+      <button onclick="hideUpdateTweet()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<header>
+  <form onsubmit="return false">
+    <input id="session_user_id" hidden value="{{ user_id }}" />
+    <button onclick="init()">Home</button>
+  </form>
+
+  <a id="sign_out" href="/sign-out">Sign out</a>
+</header>
+
+<main>
+  <h1>Home</h1>
+
+  % if user_id:
+  <form id="create_tweet" onsubmit="return false">
+    <input type="text" name="tweet_user_id" value="{{user_id}}" hidden />
+    <button class="user_icon" onclick="getTweetsByUserId(event)">{{user_char}}</button>
+    <div>
+      <textarea oninput="autoResize(event)" rows="1" name="tweet_text" placeholder="What's happening?" minlength="1" required></textarea>
+      <div class="action_bar">
+        <label class="custom_file_input" for="tweet_image">Chose file</label>
+        <input id="tweet_image" type="file" name="tweet_image" />
+        <button class="tweet_btn" onclick="postTweet(event)">Tweet</button>
+      </div>
+    </div>
+  </form>
+  % end
+
+  <section id="tweets"></section>
+</main>
+
+<aside></aside>
+
+<!--           -->
+<!--           -->
+<!--           -->
+<!--           -->
+<!-- TEMPLATES -->
+
+<template id="tweet_temp">
+  <form class="tweet" onsubmit="return false">
+    <input name="tweet_id" type="text" hidden />
+    <input name="tweet_user_id" type="text" hidden />
+    <button onclick="getTweetsByUserId(event)" class="user_icon"></button>
+    <div class="content">
+      <div class="tweet_info">
+        <p class="user_name"></p>
+        <p class="user_tag"></p>
+        <span>·</span>
+        <p class="created_ago"></p>
+      </div>
+      <p class="tweet_text"></p>
+      <div class="action_bar">
+        <button class="like_btn" onclick="likeTweet(event)">like</button>
+        <button class="edit_btn" hidden onclick="showUpdateTweet(event)">edit</button>
+        <button class="delete_btn" hidden onclick="deleteTweet(event)">delete</button>
+      </div>
+    </div>
+  </form>
+</template>
+
+% include("footer")
